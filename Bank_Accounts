@@ -1,0 +1,141 @@
+/** This class establishes bank accounts that can be modified by updating their balances
+  @author Owona
+ */
+public class BankAccount {
+	
+	private String name;
+	private double savingBalance;
+	private double checkingBalance;
+	
+	/** Construct bank accounts with initial balances and account holder name
+	 @param Name the account holder's name
+	 @param savingInitialBalance the saving account initial balance
+	 @param checkingInitialBalance the checking account initial balance 
+	 */
+	
+	public BankAccount(String Name, double savingInitialBalance, double checkingInitialBalance) {
+		
+		name = Name;
+		savingBalance = savingInitialBalance;
+		checkingBalance = checkingInitialBalance;
+	}
+	
+	/** Deposit money into saving account
+	 @param amount the amount to be deposited
+	 */
+	
+	public void depositSaving(double amount) {
+		
+		if (amount >= 0)
+		{
+		savingBalance = savingBalance + amount;
+		}
+		else 
+		{
+			System.out.println("Error: Negative deposit can't be completed!");
+		}
+		
+	}
+	
+	/** deposit money into checking account
+	 @param amount the amount to be deposited
+	 */
+	
+	public void depositChecking(double amount) {
+		
+		if (amount >= 0)
+		{
+		checkingBalance = checkingBalance + amount;
+		}
+		else 
+		{
+			System.out.println("Error: Negative deposit can't be completed!");
+		}
+	}
+	
+	/** Withdraw money form saving account 
+	 @param amount the amount to be withdrawn 
+	 */
+	
+	public void withdrawFromSaving(double amount) {
+		
+		if (amount >= 0 && amount <= savingBalance)
+		{
+		savingBalance = savingBalance - amount;
+		}
+		else
+		{
+			System.out.println("Error: Account can't be overdrawn");
+		}
+	}
+	
+	/** Withdraw money form checking account 
+	 @param amount the amount to be withdrawn 
+	 */
+	
+	public void withdrawFromChecking(double amount) {
+		
+		if (amount >= 0 && amount <= checkingBalance)
+		{
+		checkingBalance = checkingBalance - amount;
+		}
+		else
+		{
+			System.out.println("Error: Account can't be overdrawn");
+		}
+	}
+	
+	/** Transfer from saving to checking
+	 @param amount the amount to be transfer from the saving account
+	 */
+	
+	public void transferFromSaving(double amount) {
+		
+		if (amount >= 0 && amount <= savingBalance)
+		{
+		savingBalance = savingBalance - amount;
+		checkingBalance = checkingBalance + amount;
+		}
+		else
+		{
+			System.out.println("Error: account can't be overdrawn or negative transfers can't be completed");
+		}
+	}
+	
+	
+	/** Transfer from checking to saving 
+	 @param amount the amount to be transfer from the checking account
+	 */
+	
+	public void transferFromChecking(double amount) {
+		
+		if (amount >= 0 && amount <= checkingBalance)
+		{
+		checkingBalance = checkingBalance - amount;
+		savingBalance = savingBalance + amount;
+		}
+		else
+		{
+			System.out.println("Error: account can't be overdrawn or negative transfers can't be completed");
+		}
+	}
+	
+	/** Get the saving account balance
+	 @return savingBalance
+	 */
+	
+	public double getSavingBalance() {
+		
+		return savingBalance;
+	}
+	
+	/** Get the checking account balance
+	 @return checkingBalance
+	 */
+	
+	public double getCheckingBalance() {
+		
+		return checkingBalance;
+	}
+
+}
